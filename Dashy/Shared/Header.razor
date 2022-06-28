@@ -116,7 +116,7 @@
     private bool isExpaned = true;
     private async Task ToggleCollapse()
     {
-        await JSRuntime.InvokeVoidAsync("toggleCssClassOfBody", collapsedClass);
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body",collapsedClass);
         isExpaned = !isExpaned;
     }
 }
