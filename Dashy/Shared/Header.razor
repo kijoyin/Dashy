@@ -93,10 +93,10 @@
       </li>
       <li>
         <div class="switch">
-          <input type="checkbox" id="mode" checked>
+          <input type="checkbox" id="mode" checked @onchange="ToggleTheme">
           <label for="mode">
             <span></span>
-            <span>Dark</span>
+            <span>@(isDarkMode?"Dark":"Light")</span>
           </label>
         </div>
         <button class="collapse-btn" aria-expanded="@isExpaned" aria-label="@(isExpaned?"collapse menu":"expand menu")" @onclick="ToggleCollapse">
@@ -113,10 +113,17 @@
 @code
 {
     private string collapsedClass = "collapsed";
+    private string lightModeClass = "light-mode";
     private bool isExpaned = true;
+    private bool isDarkMode = true;
     private async Task ToggleCollapse()
     {
         await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body",collapsedClass);
         isExpaned = !isExpaned;
+    }
+    private async Task ToggleTheme()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "html",lightModeClass);
+        isDarkMode = !isDarkMode;
     }
 }
