@@ -1,4 +1,6 @@
-﻿<header class="page-header">
+﻿@inject IJSRuntime JSRuntime
+
+<header class="page-header">
   <nav>
     <a href="#0" aria-label="forecastr logo" class="logo">
       <svg width="140" height="49">
@@ -97,7 +99,7 @@
             <span>Dark</span>
           </label>
         </div>
-        <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
+        <button class="collapse-btn" aria-expanded="@isExpaned" aria-label="@(isExpaned?"collapse menu":"expand menu")" @onclick="ToggleCollapse">
           <svg aria-hidden="true">
             <use xlink:href="#collapse"></use>
           </svg>
@@ -107,3 +109,14 @@
     </ul>
   </nav>
 </header>
+
+@code
+{
+    private string collapsedClass = "collapsed";
+    private bool isExpaned = true;
+    private async Task ToggleCollapse()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfBody", collapsedClass);
+        isExpaned = !isExpaned;
+    }
+}
