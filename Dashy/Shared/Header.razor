@@ -1,5 +1,5 @@
 ﻿@inject IJSRuntime JSRuntime
-
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 <header class="page-header">
   <nav>
     <a href="#0" aria-label="forecastr logo" class="logo">
@@ -93,7 +93,7 @@
       </li>
       <li>
         <div class="switch">
-          <input type="checkbox" id="mode" checked @onchange="ToggleTheme">
+          <input type="checkbox" id="mode" checked="@isDarkMode" @onchange="ToggleTheme">
           <label for="mode">
             <span></span>
             <span>@(isDarkMode?"Dark":"Light")</span>
@@ -114,8 +114,24 @@
 {
     private string collapsedClass = "collapsed";
     private string lightModeClass = "light-mode";
+    private string darKModeStorageKey = "isDarkMode";
     private bool isExpaned = true;
     private bool isDarkMode = true;
+    protected override async Task OnInitializedAsync()
+    {
+        if (await localStorage.ContainKeyAsync(darKModeStorageKey))
+        {
+            isDarkMode = await localStorage.GetItemAsync<bool>(darKModeStorageKey);
+            if(!isDarkMode)
+            {
+               await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "html",lightModeClass); 
+            }
+        }
+        else
+        {
+            await localStorage.SetItemAsync<bool>(darKModeStorageKey, isDarkMode);
+        }
+    }
     private async Task ToggleCollapse()
     {
         await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body",collapsedClass);
@@ -125,5 +141,6 @@
     {
         await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "html",lightModeClass);
         isDarkMode = !isDarkMode;
+        await localStorage.SetItemAsync<bool>(darKModeStorageKey, isDarkMode);
     }
 }
