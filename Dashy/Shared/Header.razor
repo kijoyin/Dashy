@@ -1,5 +1,7 @@
 ﻿@inject IJSRuntime JSRuntime
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+
 <header class="page-header">
   <nav>
     <a href="#0" aria-label="forecastr logo" class="logo">
@@ -17,79 +19,34 @@
         <h3>Admin</h3>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#pages"></use>
-          </svg>
-          <span>Pages</span>
-        </a>
+        <AdminLink Title="Pages" Link="pages" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#users"></use>
-          </svg>
-          <span>Users</span>
-        </a>
+        <AdminLink Title="Users" Link="Users" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#trends"></use>
-          </svg>
-          <span>Trends</span>
-        </a>
+        <AdminLink Title="Trends" Link="Trends" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#collection"></use>
-          </svg>
-          <span>Collection</span>
-        </a>
+        <AdminLink Title="Collection" Link="Collection" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#comments"></use>
-          </svg>
-          <span>Comments</span>
-        </a>
+        <AdminLink Title="Comments" Link="Comments" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#appearance"></use>
-          </svg>
-          <span>Appearance</span>
-        </a>
+        <AdminLink Title="Appearance" Link="Appearance" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li class="menu-heading">
         <h3>Settings</h3>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#settings"></use>
-          </svg>
-          <span>Settings</span>
-        </a>
+        <AdminLink Title="Settings" Link="Settings" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#options"></use>
-          </svg>
-          <span>Options</span>
-        </a>
+        <AdminLink Title="Options" Link="Options" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
-        <a href="#0">
-          <svg>
-            <use xlink:href="#charts"></use>
-          </svg>
-          <span>Charts</span>
-        </a>
+        <AdminLink Title="Charts" Link="Charts" IsCollapsed="@(!isExpaned)"></AdminLink>
       </li>
       <li>
         <div class="switch">
