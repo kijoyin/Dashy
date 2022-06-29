@@ -9,7 +9,7 @@
         <use xlink:href="#logo"></use>
       </svg>
     </a>
-    <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+    <button class="toggle-mob-menu" aria-expanded="@isMobileClosed" aria-label="@(isMobileClosed?"close menu":"open menu")" @onclick="ToggleMobileMenu">
       <svg width="20" height="20" aria-hidden="true">
         <use xlink:href="#down"></use>
       </svg>
@@ -70,8 +70,10 @@
 @code
 {
     private string collapsedClass = "collapsed";
+    private string toggleMobileMenuClass = "mob-menu-opened";
     private string lightModeClass = "light-mode";
     private string darKModeStorageKey = "isDarkMode";
+    private bool isMobileClosed = true;
     private bool isExpaned = true;
     private bool isDarkMode = true;
     protected override async Task OnInitializedAsync()
@@ -93,6 +95,11 @@
     {
         await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body",collapsedClass);
         isExpaned = !isExpaned;
+    }
+    private async Task ToggleMobileMenu()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body",toggleMobileMenuClass);
+        isMobileClosed = !isMobileClosed;
     }
     private async Task ToggleTheme()
     {
