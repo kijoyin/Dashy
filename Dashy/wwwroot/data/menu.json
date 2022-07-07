@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Admin",
+    "menus": [
+      {
+        "title": "Pages",
+        "link": "/pages"
+      },
+      {
+        "title": "Users",
+        "link": "/users"
+      },
+      {
+        "title": "Trends",
+        "link": "Trends"
+      },
+      {
+        "title": "Collection",
+        "link": "Collection"
+      },
+      {
+        "title": "Comments",
+        "link": "Comments"
+      },
+      {
+        "title": "Appearance",
+        "link": "Appearance"
+      }
+    ]
+  },
+  {
+    "title": "Settings",
+    "menus": [
+      {
+        "title": "Settings",
+        "link": "Settings"
+      },
+      {
+        "title": "Options",
+        "link": "Options"
+      },
+      {
+        "title": "Charts",
+        "link": "Charts"
+      }
+    ]
+  }
+]

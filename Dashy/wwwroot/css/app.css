@@ -182,6 +182,7 @@ body {
         }
 
         .page-header .admin-menu a,
+        .page-header .admin-menu navlink,
         .page-header .admin-menu button {
             display: flex;
             align-items: center;
@@ -190,6 +191,8 @@ body {
 
             .page-header .admin-menu a:hover,
             .page-header .admin-menu a:focus,
+            .page-header .admin-menu navlink:hover,
+            .page-header .admin-menu navlink:focus,
             .page-header .admin-menu button:hover,
             .page-header .admin-menu button:focus {
                 background: var(--page-header-bgColor-hover);
@@ -199,6 +202,8 @@ body {
 
                 .page-header .admin-menu a:hover svg,
                 .page-header .admin-menu a:focus svg,
+                .page-header .admin-menu navlink:hover svg,
+                .page-header .admin-menu navlink:focus svg,
                 .page-header .admin-menu button:hover svg,
                 .page-header .admin-menu button:focus svg {
                     fill: var(--blue);
