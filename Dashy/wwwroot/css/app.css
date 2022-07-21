@@ -68,6 +68,9 @@ input {
 svg {
     display: block;
 }
+i {
+    display: block;
+}
 
 body {
     font: 16px/1.5 "Lato", sans-serif;
@@ -180,8 +183,16 @@ body {
             fill: var(--page-header-txtColor);
             margin-right: 10px;
         }
+        .page-header .admin-menu i {
+            width: 20px;
+            height: 20px;
+            fill: var(--page-header-txtColor);
+            padding-top:8px;
+            margin-right:4px;
+        }
 
         .page-header .admin-menu a,
+        .page-header .admin-menu navlink,
         .page-header .admin-menu button {
             display: flex;
             align-items: center;
@@ -190,6 +201,8 @@ body {
 
             .page-header .admin-menu a:hover,
             .page-header .admin-menu a:focus,
+            .page-header .admin-menu navlink:hover,
+            .page-header .admin-menu navlink:focus,
             .page-header .admin-menu button:hover,
             .page-header .admin-menu button:focus {
                 background: var(--page-header-bgColor-hover);
@@ -199,6 +212,8 @@ body {
 
                 .page-header .admin-menu a:hover svg,
                 .page-header .admin-menu a:focus svg,
+                .page-header .admin-menu navlink:hover svg,
+                .page-header .admin-menu navlink:focus svg,
                 .page-header .admin-menu button:hover svg,
                 .page-header .admin-menu button:focus svg {
                     fill: var(--blue);

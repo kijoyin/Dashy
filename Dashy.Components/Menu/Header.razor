@@ -1,0 +1,100 @@
+﻿@inject IJSRuntime JSRuntime
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject HttpClient Http
+@using Dashy.Components.Models;
+
+<Svg></Svg>
+
+<header class="page-header">
+    <nav>
+        <a href="#0" aria-label="forecastr logo" class="logo">
+            <svg width="140" height="49">
+                <use xlink:href="#logo"></use>
+            </svg>
+        </a>
+        <button class="toggle-mob-menu" aria-expanded="@isMobileClosed" aria-label="@(isMobileClosed?"close menu":"open menu")" @onclick="ToggleMobileMenu">
+            <svg width="20" height="20" aria-hidden="true">
+                <use xlink:href="#down"></use>
+            </svg>
+        </button>
+
+        @if (menuGroups != null)
+        {
+            <ul class="admin-menu">
+
+                @foreach (var group in menuGroups)
+                {
+                    <li class="menu-heading">
+                        <h3>@group.Title</h3>
+                    </li>
+                    @foreach (var menu in group.Menus)
+                    {
+                        <li>
+                            <AdminLink Title="@menu.Title" Link="@menu.Title.ToLower()" IsCollapsed="@(!isExpaned)" Icon="@menu.Icon"></AdminLink>
+                        </li>
+                    }
+                }
+                <li>
+                    <div class="switch">
+                        <input type="checkbox" id="mode" checked="@isDarkMode" @onchange="ToggleTheme">
+                        <label for="mode">
+                            <span></span>
+                            <span>@(isDarkMode?"Dark":"Light")</span>
+                        </label>
+                    </div>
+                    <button class="collapse-btn" aria-expanded="@isExpaned" aria-label="@(isExpaned?"collapse menu":"expand menu")" @onclick="ToggleCollapse">
+                        <svg aria-hidden="true">
+                            <use xlink:href="#collapse"></use>
+                        </svg>
+                        <span>Collapse</span>
+                    </button>
+                </li>
+            </ul>
+        }
+    </nav>
+</header>
+
+@code
+{
+    private string collapsedClass = "collapsed";
+    private string toggleMobileMenuClass = "mob-menu-opened";
+    private string lightModeClass = "light-mode";
+    private string darKModeStorageKey = "isDarkMode";
+    private bool isMobileClosed = true;
+    private bool isExpaned = true;
+    private bool isDarkMode = true;
+
+    MenuGroup[] menuGroups;
+    protected override async Task OnInitializedAsync()
+    {
+        menuGroups = await Http.GetFromJsonAsync<MenuGroup[]>("data/menu.json");
+        if (await localStorage.ContainKeyAsync(darKModeStorageKey))
+        {
+            isDarkMode = await localStorage.GetItemAsync<bool>(darKModeStorageKey);
+            if (!isDarkMode)
+            {
+                await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "html", lightModeClass);
+            }
+        }
+        else
+        {
+            await localStorage.SetItemAsync<bool>(darKModeStorageKey, isDarkMode);
+        }
+    }
+    private async Task ToggleCollapse()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body", collapsedClass);
+        isExpaned = !isExpaned;
+    }
+    private async Task ToggleMobileMenu()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "body", toggleMobileMenuClass);
+        isMobileClosed = !isMobileClosed;
+    }
+    private async Task ToggleTheme()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleCssClassOfElement", "html", lightModeClass);
+        isDarkMode = !isDarkMode;
+        await localStorage.SetItemAsync<bool>(darKModeStorageKey, isDarkMode);
+    }
+}

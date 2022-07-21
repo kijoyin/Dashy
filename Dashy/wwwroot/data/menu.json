@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Admin",
+    "menus": [
+      {
+        "title": "Pages",
+        "link": "/pages",
+        "icon": "file"
+      },
+      {
+        "title": "Users",
+        "link": "/users",
+        "icon": "user"
+      },
+      {
+        "title": "Trends",
+        "link": "Trends",
+        "icon": "chart-bar"
+      },
+      {
+        "title": "Collection",
+        "link": "Collection",
+        "icon": "object-group"
+      },
+      {
+        "title": "Comments",
+        "link": "Comments",
+        "icon": "comment"
+      },
+      {
+        "title": "Appearance",
+        "link": "Appearance",
+        "icon": "eye"
+      }
+    ]
+  },
+  {
+    "title": "Settings",
+    "menus": [
+      {
+        "title": "Settings",
+        "link": "Settings",
+        "icon": "gear"
+      },
+      {
+        "title": "Options",
+        "link": "Options",
+        "icon": "filter"
+      },
+      {
+        "title": "Charts",
+        "link": "Charts",
+        "icon": "chart-line"
+      }
+    ]
+  }
+]

@@ -1,12 +1,13 @@
-﻿<a href="@Link" title="@(IsCollapsed?Title:"")">
-    <svg>
-        <use href="@($"#{Title.ToLower()}")"></use>
-    </svg>
+﻿
+<NavLink  href="@Link" title="@(IsCollapsed?Title:"")">
+
+    <i class="fa-lg fa-regular fa-@Icon.ToLower()"></i>
     <span>@Title</span>
-</a>
+</NavLink>
 
 @code {
     [Parameter] public string Title { get; set; }
+    [Parameter] public string Icon { get; set; }
     [Parameter] public string Link { get; set; }
     [Parameter] public bool IsCollapsed { get; set; }
 }
