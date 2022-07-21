@@ -68,6 +68,9 @@ input {
 svg {
     display: block;
 }
+i {
+    display: block;
+}
 
 body {
     font: 16px/1.5 "Lato", sans-serif;
@@ -179,6 +182,13 @@ body {
             height: 20px;
             fill: var(--page-header-txtColor);
             margin-right: 10px;
+        }
+        .page-header .admin-menu i {
+            width: 20px;
+            height: 20px;
+            fill: var(--page-header-txtColor);
+            padding-top:8px;
+            margin-right:4px;
         }
 
         .page-header .admin-menu a,

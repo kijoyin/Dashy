@@ -30,7 +30,7 @@
                     @foreach (var menu in group.Menus)
                     {
                         <li>
-                            <AdminLink Title="@menu.Title" Link="@menu.Title.ToLower()" IsCollapsed="@(!isExpaned)"></AdminLink>
+                            <AdminLink Title="@menu.Title" Link="@menu.Title.ToLower()" IsCollapsed="@(!isExpaned)" Icon="@menu.Icon"></AdminLink>
                         </li>
                     }
                 }

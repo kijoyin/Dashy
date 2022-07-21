@@ -4,27 +4,33 @@
     "menus": [
       {
         "title": "Pages",
-        "link": "/pages"
+        "link": "/pages",
+        "icon": "file"
       },
       {
         "title": "Users",
-        "link": "/users"
+        "link": "/users",
+        "icon": "user"
       },
       {
         "title": "Trends",
-        "link": "Trends"
+        "link": "Trends",
+        "icon": "chart-bar"
       },
       {
         "title": "Collection",
-        "link": "Collection"
+        "link": "Collection",
+        "icon": "object-group"
       },
       {
         "title": "Comments",
-        "link": "Comments"
+        "link": "Comments",
+        "icon": "comment"
       },
       {
         "title": "Appearance",
-        "link": "Appearance"
+        "link": "Appearance",
+        "icon": "eye"
       }
     ]
   },
@@ -33,15 +39,18 @@
     "menus": [
       {
         "title": "Settings",
-        "link": "Settings"
+        "link": "Settings",
+        "icon": "gear"
       },
       {
         "title": "Options",
-        "link": "Options"
+        "link": "Options",
+        "icon": "filter"
       },
       {
         "title": "Charts",
-        "link": "Charts"
+        "link": "Charts",
+        "icon": "chart-line"
       }
     ]
   }
